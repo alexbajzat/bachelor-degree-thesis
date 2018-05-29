@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{combelow}% provides \cb to place comma below character
+\usepackage{csquotes}
 \usepackage{newunicodechar}
 \usepackage[romanian]{babel}
 \usepackage{graphicx}
@@ -58,15 +59,16 @@
 
 \newpage
 
-\subfile{sections/abstract}
+
 \subfile{sections/introduction}
+\newpage
+\subfile{sections/firstchapter}
 
 \newpage
 
 \bibliographystyle{plain}
-\bibliography{bibliography/list} 
+\bibliography{bibliography/list}
 
 \printindex
-\subfile{sections/appendix}
 
 \end{document}
