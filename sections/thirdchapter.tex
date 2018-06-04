@@ -155,10 +155,120 @@
 	
 	Ultimului strat adaugat in configuratie, ii revine datoria de a reduce dimensiunea de iesire dupa procesare, la numarul de clase ce trebuiesc clasificate. Acest lucru in cazul nostru este realizat de un strat de tip Hidden care are n ca dimensiune de iesire si k dimensiune de iesire (unde n este dimensiunea datelor de iesire al stratului precedent iar k este numarul total de clase ce trebuiesc clasificate).
 	 
-	Implementarea functiei Softmax de clasficiare se face in clasa Softmax din pachetul model. Algoritmul foloseste functia exponent al bibliotecii NumPy pentru a reprezenta valorile obtinute sub forma de probabilitati, iar mai apoi le normalizeaza. Fig. n+4 si Fig. n+5
+	Implementarea functiei Softmax de clasficiare se face in clasa Softmax din pachetul model. Algoritmul foloseste functia exponent al bibliotecii NumPy pentru a reprezenta valorile obtinute sub forma de probabilitati, iar mai apoi le normalizeaza. (Vezi Fig. \ref{fig:softmax})
+	
+	\vfill
+	
+	\begin{figure}[H]
+		\includegraphics[width=10cm]{softmax}
+		\caption{\label{fig:softmax} Cod sursa pentru algoritmul Softmax}
+	\end{figure}
+
+	\newpage
+	
+	Dupa finalizarea acestor pasi, vom obtine pentru fiecare intrare un vector de dimensiune k care contine probabilitatea pentru fiecare clasa pe pozitia i ( 0 >= i >k, unde k este numarul de clase). Datorita faptului ca avem doar o singura clasa corecta, corespunzatoare fiecarei data de intrare, cunoscuta in momentul antrenarii, dorim sa aflam cum a influentat modelul nostru decizia si cum putem sa il penalizam, in cazul unei decizii eronate. Pentru a realiza acest lucru, vom calcula functia de eroare cross-entropy (Vezi Fig. \ref{fig:cross-entropy}). Avantajul utilizarii acestei functii de eroare, este valoarea sa descrecatoare exponential, pe masura ce x creste. (Vezi Fig. \ref{fig:logloss})
+	
+	\begin{figure}[H]
+		\includegraphics[width=10cm]{cross-entropy}
+		\caption{\label{fig:cross-entropy} Functia cross-entropy, unde p este un vector cu clasele corecte iar q este un vector cu predictiile modelului}
+	\end{figure}	
+	
+	\vfill
+	
+	\begin{figure}[H]
+		\includegraphics[width=10cm]{logloss}
+		\caption{\label{fig:logloss} Reprezentare grafica a functiei de eroare logaritm}
+	\end{figure}
+
+
+	Scopul final al utilizarii acestei functii de eroare, este de a obtine valorile de penalizare ce trebuiesc aplicate ponderilor ce au influentat aceasta decizie. (vezi Fig. \ref{fig:error})
+	
+	\begin{figure}[H]
+		\includegraphics[width=14cm]{error}
+		\caption{\label{fig:error} Calcularea erorii prin functia logaritm}
+	\end{figure}
+
+	
+	Implicit, clasificatorul Softmax va calcula functia de regularizare L2, utilizand parametrul configurat regularization, asupra ponderilor straturilor configurate. Functia L2 ne va da o valoare reprezentand eroarea de regularizare, care va urma a fi adaugata la eroarea functiei logaritm in scopul evitarii situatiei de overfitting. (vezi Fig. \ref{l2})
+
+
+	\begin{figure}[H]
+		\includegraphics[width=15cm]{l2}
+		\caption{\label{fig:l2} Calcularea regularizarii L2 si eroarea totala}
+	\end{figure}
+
+	Dupa ce clasificatorul va returna valorile de erori corespunzatoare fiecarei intrari, se va finaliza etapa de feed-forward si jumatate din circuitul de antrenare al modelului. Urmatorul pas va fi de a regla ponderile in functie de aceasta eroare, prin etapa de back-propagation.
+	 
+	Asemanator etapei de inferenta, propagarea erorii se realizeaza diferit de la un tip de strat la altul. De aceea aplicatia noastra declara o metoda abstracta backprop, implementata de catre fiecare tip de layer.
+	
+	Propagarea erorii se realizeaza prin derivate chain rule, regula a derivatelor compuse care spune ca daca o variabila z depinde o variabila y, care la randul ei depinde de o variabila x, atunci z depinde si de x si se numesc variabile dependente, de unde rezulta formula:  dz/dx  =dz/dy*dy/dx
+	
+	Astfel aplicand regula lantului derivatelor in contextul nostru, fiecare strat isi va calcula derivata in functie de derivata stratului urmator. In cazul ultimului strat, cel ce precede clasificatorul, derivata va fi chiar rezultatul functiei de eroare.
 	
 	
+	Operatia backprop a stratului de tip Hidden se produce astfel:
+	\begin{itemize}
+	\item	Vom calcula derivata functiei de activare. Aceasta derivata va fi implementata de catre clasele de tip Activation.
 	
+	\item	Derivata functiei de activare va fi multplicata (operatia np.dot, a bibliotecii NumPy) cu datele de intrare procesate initial (acestea sunt salvate in memorie la momentul etapei de feed-forward).
+	
+	
+	\item	Se calculeaza noile derivatele ale ponderilor, utilizand aceasi operatie de multiplicare. Odata ce obtinem derivatele ponderilor, putem modifica ponderile. Putem profita de faptul ca derivatele indica panta functiei, pentru a modifica ponderile in scopul convergerii. Utilizand parametrul din etapa de configuratie, stepSize (parametru ce influenteaza viteza de convergere), vom modifica ponderile astfel incat la urmatorul pas de feed-forward acestea vor avea o eroare diminuata asupra aceluiasi set de intrari.
+	
+	\item	Odata ce ponderile au fost modificate, vom repeta pasul derivarii pentru datele de intrare si noile ponderi. (Vezi Fig. \ref{fig:hidden_backprop})
+	\end{itemize}
+
+	\begin{figure}[H]
+	\includegraphics[width=15cm]{hidden_backprop}
+	\caption{\label{fig:hidden_backprop} Operatia backprop a stratului Hidden}
+	\end{figure}
+
+	Operatia backprop a stratului de tip Convolution:
+	\begin{itemize}
+	\item	Conceptul propagarii este asemanator celui de tip Hidden. Diferenta va fi facuta la modul in care datele si derivatele sunt reprezentate. Vom reutiliza operatia col2im pentru a readuce datele in starea initiala dupa proceserea acestora.
+	La finalul etapi de propagare a stratului de tip Convolution, filtrele vor avea modificarile aduse de catre functia de eroare. (Vezi Fig. \ref{fig:conv_backprop})
+	\end{itemize}
+
+	\begin{figure}[H]
+	\includegraphics[width=17cm]{conv_back}
+	\caption{\label{fig:conv_backprop} Operatia backprop a stratului de Convolution}
+	\end{figure}
+
+	Configurarea arhitecturii a fost conceputa sa urmareasca un sablon cat mai simplu. Definirea straturilor si crearea lor va fi realizata prin metoda addLayer al clasei LayersBuilder. Metoda primeste un parametru ce reprezinta tipul de strat ce se doreste a fi creat si un dictionar ce reprezinta parametrii necesari construirii tipului respectiv de strat. Scopul clasei LayersBuilder este de a usura crearea arhitecturii modelului prin izolarea logicii de construire si concatenare a tipurilor de straturi. (vezi Fig. \ref{fig:add_layers})	
+	
+	\begin{figure}[H]
+		\includegraphics[width=17cm]{add_layers}
+		\caption{\label{fig:add_layers} Adaugarea straturilor}
+	\end{figure}
+
+	Logica din spate a clasei LayerBuilder se ocupa de ordinea in care straturile sunt adaugate, de  compatibilitatile dintre straturi, de respectarea unor constrangeri si de validare.
+	
+	Primul pas in construirea straturilor este de a aduna informatii despre structura straturilor, cum ar fi adancimea totala pe care o vom aveam, datorata straturilor de convolutie si a filtrelor,  numarul de reduceri de dimensiune pe care le vom aplica prin straturile de tip Pooling si numarul de straturi de tipuri Hidden. Acestea sunt necesare pentru construirea modelului, dat fiind faptul ca straturile vor avea o dependenta stransa intre ele.  (vezi Fig. \ref{fig:layer_builder})
+	
+	\begin{figure}[H]
+		\includegraphics[width=17cm]{layer_builder}
+		\caption{\label{fig:layer_builder} Pregatirea datelor; metoda build}
+	\end{figure}
+	
+	\vfill
+	
+
+	Dupa ce au fost adunate desule informatii generale legate de structura modelului, vom incepe etapa de constructie a modelului, prin crearea unei liste de obiecte de tip Layer. Parametrii de regularizare si functia de activare vor fi transmise ca si parametri la momentul initializarii tipului de strat. Dupa ce lista a fost construita cu succes,  va fi returnata spre a fi folosita de obiectul de tip Model. (Vezi Fig. \ref{fig:actual_build})
+	
+	
+	\begin{figure}[H]
+		\includegraphics[width=17cm]{actual_build}
+		\caption{\label{fig:actual_build} Constructia sirului de straturi}
+	\end{figure}
+
+	\newpage
+
+	Dupa ce avem lista de straturi consistent configurata, vom crea un obiect de tip Model, entitatea care va modela parametrii. (vezi Fig \ref{fig:train})
+	
+	\begin{figure}[H]
+		\includegraphics[width=17cm]{train}
+		\caption{\label{fig:train} Crearea modelului si antrenarea sa}
+	\end{figure}
 	
 
 \end{document}
