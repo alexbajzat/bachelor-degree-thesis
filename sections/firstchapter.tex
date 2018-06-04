@@ -27,11 +27,48 @@
 	\subsection{Cum functioneaza?}
 	Invatarea automata urmareste un sablon (Figura 1.), a carui scop este dezvoltarea unui model capabil de a separa datele de intrare, in grupuri care au aspecte comune, astfel putand sa le clasifice. Datele de intrare sunt adesea distribuite in asa fel incat trasarea unei linii drepte in plan nu va putea clasifica corect datele, astfel  modelul va trebui sa gaseasca o corelatie neliniara intre datele care ii sunt date si rezultatul care va servi ca predictie a sa. (Vezi Figura \ref{fig:uml-diagram})
 	
-	\vfill
+
 	
 	\begin{figure}[H]
 		\includegraphics[width=15cm]{ml-uml}  
-		\caption{\label{fig:uml-diagram} Diagrama generala a algoritmului de invatare supervizata \cite{predictive_modelling}}
+		\caption{\label{fig:uml-diagram} Diagrama generala a algoritmului de invatare supervizata
+		\protect
+		\footnotemark}
 	\end{figure}
+
+	\footnotetext{http://sebastianraschka.com/Articles/2014intro\char`_supervised\char`_learning.html}
+
+	\newpage
 	
+	Modul de functionare al algoritmilor de invatare automata este dat de clasificarea lor in cele doua tipuri, invatare supervizata si invatare nesupervizata. Punctul cheie care face diferenta intre aceste doua tipuri de algoritmi, este aprovizionarea invatarii cu clase de clasificare si date de validare, in cazul invatarii supervizate. Algoritmul invatarii nesupervizate este bazat pe un curs “instinctiv” i.e. modalitate de clasificare si impartire este lasata la latitudinea masinii.
+	
+	Invatarea automata supervizata este bazata pe perechi alcatuite din date de intrare si o “eticheta” atribuita fiecarei date de intrare. Algoritmul va modela o functie, bazata pe aceste perechi de intrare, iar scopul final este de a atribui corect unei valori arbitrare, nefamiliare algoritmului, o eticheta corespunzatoare din cele care i-au fost aprovizionate in etapa de invatare. 
+	In contrast, invatarea automata nesupervizata este bazata doar pe date de intrare, astfel algoritmul fiind obligat sa gestioneze informatia fara a fi indrumat. Avantajul acestui algoritm este faptul ca poate gestiona probleme complexe, superioare creierului uman, prin faptul ca va crea sau va atribui clase unor grupuri de date de intrare, bazat pe similaritati descoperite pe parcurs.
+	Alegerea tipului de invatare va fi data de complexitatea si structura  datelor de intrare cat si de scopul problemei. Nu este exclusa posibilitatea utilizarii celor doua metode concomitent, adeseori ducand la rezultate mai concise.
+	
+	\subsection{Aplicabilitate}
+	Invatarea automata se regaseste in multe activitati ale societatii moderne, se extinde pe diferite planuri si acopera nevoi de zi cu zi ale oamenilor. De la sugestii pe site-uri de muzica si clipuri video, filtrarea reclamelor si a continutului de pe site-uri de socializare  si pana la masini cu functionalitate de parcare automata, invatarea automata este raspunsul problemelor de gestionare si clasificare a evenimentelor si a stimulilor externi. 
+	Invatare automata se intinde pe diferite domenii acoperind nevoi de baza dar exceland si in aplicatii mai complexe.
+	
+	\vfill
+	
+	\subsection{O noua perspectiva. Retele Neuronale}
+	Studiul creierului uman si a modului sau de functionare a deschis porti noi in domeniul stiintei. Felul in care neuronii cumunica prin sinapse si isi intaresc legaturile cele mai des folosite, a inspirat oameni de stiinta in creare unei analogii in domeniul stiintific, care va avea sa rezolve probleme asemanatoare celor pe care creierul le gestioneaza.
+	
+	In 1943, idea unei  lucrari care prezenta modul de functionare a creierului, semnata de  neurofiziologul Warren McClulloch si matematicianul Walter Pitts,   a fost sustinuta practic prin simularea functiilor neuronilor si a legaturile dintre ei, prin circuite electrice. Retelele neuronale fizice, reprezentate prin circuite electrice, au fost primul stimulent care a introdus o noua perspectiva in rezolvarea problemelor inca din inaintea dezvoltarii domeniului inteligentei artificiale. 
+	
+	
+	
+	ADD Todo feed-forward, overfitting, regulariza, back-prop, convolutions, max pooling, feature-map etc.
+	
+	Retelele neuronale artificiale au ca unitate de baza neuronul artificial, care primeste unul sau mai multe semnale de intrare (asociate cu potentialul postsinaptic excitator si potentialul postsinaptic inhibator), care insumate vor rezulta un semnal de iesire. Acest semnal de iesire este mai apoi trecut printr-o functie de activare (functie de transfer) pentru a combate rezultatul linear al insumarii semnalelor de intrare ale neuronului. (Vezi Fig. \ref{fig:neuron-schema})
+	
+	\begin{figure}[H]
+		\includegraphics[width=15cm]{neuron-schema}  
+		\caption{\label{fig:neuron-schema} Diagrama neuron artificial 
+		\protect 
+		\footnotemark}
+	\end{figure}
+	\footnotetext{http://www.theprojectspot.com/tutorial-post/introduction-to-artificial-neural-networks-part-1/7}
+
 \end{document}
