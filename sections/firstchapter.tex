@@ -25,7 +25,7 @@
 	
 	
 	\subsection{Cum functioneaza?}
-	Invatarea automata urmareste un sablon (Figura 1.), a carui scop este dezvoltarea unui model capabil de a separa datele de intrare, in grupuri care au aspecte comune, astfel putand sa le clasifice. Datele de intrare sunt adesea distribuite in asa fel incat trasarea unei linii drepte in plan nu va putea clasifica corect datele, astfel  modelul va trebui sa gaseasca o corelatie neliniara intre datele care ii sunt date si rezultatul care va servi ca predictie a sa. (Vezi Figura \ref{fig:uml-diagram})
+	Invatarea automata urmareste un sablon, a carui scop este dezvoltarea unui model capabil de a separa datele de intrare, in grupuri care au aspecte comune, astfel putand sa le clasifice. Datele de intrare sunt adesea distribuite in asa fel incat trasarea unei linii drepte in plan nu va putea clasifica corect datele, astfel  modelul va trebui sa gaseasca o corelatie neliniara intre datele care ii sunt date si rezultatul care va servi ca predictie a sa. (Vezi Figura \ref{fig:uml-diagram})
 	
 
 	
@@ -50,16 +50,38 @@
 	Invatarea automata se regaseste in multe activitati ale societatii moderne, se extinde pe diferite planuri si acopera nevoi de zi cu zi ale oamenilor. De la sugestii pe site-uri de muzica si clipuri video, filtrarea reclamelor si a continutului de pe site-uri de socializare  si pana la masini cu functionalitate de parcare automata, invatarea automata este raspunsul problemelor de gestionare si clasificare a evenimentelor si a stimulilor externi. 
 	Invatare automata se intinde pe diferite domenii acoperind nevoi de baza dar exceland si in aplicatii mai complexe.
 	
+	Printre domenii in care inteligenta artificiala si invatarea automata si-au lasat amprenta, se enumera:
+	
+	\begin{itemize}
+		\item Masini inteligente. Invatarea automata, impreuna cu senzorii de pe masini, au adus o multitudine de functionalitati utile. Astazi masinile se pot parca si conduce singure si pot evita un accident iminent.
+		
+		\item Securitatea datelor. Virusii de tip Malware sunt o problema persistenta din punctul de vedere al datelor personale ce prezinta o valoare pentru un atacator. Invatarea automata ajuta in combatarea acestei probleme prin depistarea fisierelor noi aparute de malware.
+		
+		\item Tranzactii financiare. Invatarea automata este folosita de multi giganti ai pietei de capital si bursa, pentru realizarea unor schimburi automatizate cat mai precise
+		
+		\item Sanatate. Algoritmii predictivi sunt astazi un factor important in detectarea precoce a unor probleme de sanatate, cum ar fi cancerul.
+		
+		\item Detectarea de fraude bancare. Bazat pe invatarea automata, bancile pot detecta cand are loc o tranzactie fraudulenta sau spalare de bani, bazat pe detaliile acelei tranzactii.			
+	\end{itemize}
+	
 	\vfill
+	
+	
+	\section{Procesarea de imagini}
+	Domeniul procesarii de imagini nu poate fi definit sau clasificat printr-o simpla categorie. Acesta a fost si este intr-o continua dezvoltare si urmareste mai multe planuri. 
+	
+	Importanta acestor imagini digitale, se poate resimti pe multe domenii. Bazat pe aceste reprezentari si pe abilitati dobandite pana in prezent in materie de procesare si prelucrare, am obtinut diferite rezultate si aplicabilitati
+	
+	\subsection{Problema procesarii imaginilor}
+	Problema procesarii imaginilor se rezuma la procesul de invatare a unui sistem cu abilitati pseudo-cognitive de a lua decizii pe baza unor detalii sau a unor caracteristici ale imaginii. Sistemul poate fi invatat, prin intermediul algoritmilor, sa extraga caracteristici spre a le refolosi, sau poate utiliza date deja existente in scopul gasirii unor similaritati. 
+	
+	Exista diferite reprezentari ale imaginilor pe sisteme, definite ca si fiind formaturi. Unitatea de baza a imaginii este pixel-ul. Pixel este o prescurtare provenita de la Picture Element, si reprezinta un punct de la o pozitie x, y a ecranului. In functie de format, pixelul reprezinta proprietati ale elementului de pe pozitia x, y; astfel de proprietati pot fi culoarea si optional, opacitatea elementului.O multitudine de pixel, fiecare cu proprietatiile proprii, reprezinta reprezentarea unei imagini. \cite{image_representation}
 	
 	\subsection{O noua perspectiva. Retele Neuronale}
 	Studiul creierului uman si a modului sau de functionare a deschis porti noi in domeniul stiintei. Felul in care neuronii cumunica prin sinapse si isi intaresc legaturile cele mai des folosite, a inspirat oameni de stiinta in creare unei analogii in domeniul stiintific, care va avea sa rezolve probleme asemanatoare celor pe care creierul le gestioneaza.
 	
 	In 1943, idea unei  lucrari care prezenta modul de functionare a creierului, semnata de  neurofiziologul Warren McClulloch si matematicianul Walter Pitts,   a fost sustinuta practic prin simularea functiilor neuronilor si a legaturile dintre ei, prin circuite electrice. Retelele neuronale fizice, reprezentate prin circuite electrice, au fost primul stimulent care a introdus o noua perspectiva in rezolvarea problemelor inca din inaintea dezvoltarii domeniului inteligentei artificiale. 
 	
-	
-	
-	ADD Todo feed-forward, overfitting, regulariza, back-prop, convolutions, max pooling, feature-map etc.
 	
 	Retelele neuronale artificiale au ca unitate de baza neuronul artificial, care primeste unul sau mai multe semnale de intrare (asociate cu potentialul postsinaptic excitator si potentialul postsinaptic inhibator), care insumate vor rezulta un semnal de iesire. Acest semnal de iesire este mai apoi trecut printr-o functie de activare (functie de transfer) pentru a combate rezultatul linear al insumarii semnalelor de intrare ale neuronului. (Vezi Fig. \ref{fig:neuron-schema})
 	
@@ -70,5 +92,18 @@
 		\footnotemark}
 	\end{figure}
 	\footnotetext{http://www.theprojectspot.com/tutorial-post/introduction-to-artificial-neural-networks-part-1/7}
+	
+	
+	
+	ADD Todo feed-forward, overfitting, regulariza, back-prop, convolutions, max pooling, feature-map etc.
+	
+	Un model predictiv de retele neuronale este alcatuit din mai multe straturi de neuroni, lucrand impreuna pentru o modela o functie non-lineara complexa.
+	Fiecare strat va avea propriile proprietati, cum ar fi: numarul de neuroni, ponderile aferente si functia de activare.
+	
+	Procesul in care date sunt procesate, prin straturile de neuroni intermediare, se numeste operatie feed-forward. La finalul operatiei feed-forward, algoritmul va prezenta datele asupra carora s-a aplicat o mutatie. Pe baza acestor date, algoritmul va verifica rezultatul obtinut comparandu-l cu un set de date de antrenare. 
+	
+	Odata ce eroare a fost obtinuta, aceasta va circula in sens invers prin straturile de neuroni si va ajusta ponderile ce au influentat decizia luata de model.
+	
+	
 
 \end{document}
