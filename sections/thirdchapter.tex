@@ -86,7 +86,6 @@
 	\item	Dupa realizarea acestor pasi, suntem pregatiti sa trimitem rezultatul mai departe spre a fi procesat de eventuale urmatoare straturi. (Vezi Fig. \ref{fig:hidden_forward}).
 	\end{itemize}
 
-	\vfill
 	
 	\begin{figure}[H]
 		\includegraphics[width=14cm]{hidden_forward}  
@@ -166,7 +165,7 @@
 
 	\newpage
 	
-	Dupa finalizarea acestor pasi, vom obtine pentru fiecare intrare un vector de dimensiune k care contine probabilitatea pentru fiecare clasa pe pozitia i ( 0 >= i >k, unde k este numarul de clase). Datorita faptului ca avem doar o singura clasa corecta, corespunzatoare fiecarei data de intrare, cunoscuta in momentul antrenarii, dorim sa aflam cum a influentat modelul nostru decizia si cum putem sa il penalizam, in cazul unei decizii eronate. Pentru a realiza acest lucru, vom calcula functia de eroare cross-entropy (Vezi Fig. \ref{fig:cross-entropy}). Avantajul utilizarii acestei functii de eroare, este valoarea sa descrecatoare exponential, pe masura ce x creste. (Vezi Fig. \ref{fig:logloss})
+	Dupa finalizarea acestor pasi, vom obtine pentru fiecare intrare un vector de dimensiune k care contine probabilitatea pentru fiecare clasa pe pozitia i ( 0 >= i > k, unde k este numarul de clase). Datorita faptului ca avem doar o singura clasa corecta, corespunzatoare fiecarei data de intrare, cunoscuta in momentul antrenarii, dorim sa aflam cum a influentat modelul nostru decizia si cum putem sa il penalizam, in cazul unei decizii eronate. Pentru a realiza acest lucru, vom calcula functia de eroare cross-entropy (Vezi Fig. \ref{fig:cross-entropy}). Avantajul utilizarii acestei functii de eroare, este valoarea sa descrecatoare exponential, pe masura ce x creste. (Vezi Fig. \ref{fig:logloss})
 	
 	\begin{figure}[H]
 		\includegraphics[width=10cm]{cross-entropy}

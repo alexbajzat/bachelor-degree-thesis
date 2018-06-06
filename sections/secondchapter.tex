@@ -55,17 +55,54 @@
 	
 	Dupa aparitia modelului Simon, creat de IBM, dispozitivele mobile vor avea sa urmeze un progres remarcabil in termen de functionalitate, stil si cel mai important, forta de computatie. 
 	Telefoanele mobile au reusit sa introduca in buzunarul oamenilor forta de procesare, de la utilizarea unui simplu serviciu de email sau calendar, pana la utilizarea aplicatiilor ce dispun de inteligenta artificiala. \cite{history_cellphones}
+	\newline
 	
-	\vfill
 	\section{Sistemul de operare Android}
-	Android este un sistem de operare dezvoltat si intretinut de catre compania Google. Google a cumparat in anul 2005 compania Android Inc., o companie ce se ocupa cu sisteme de operare pentru camere foto digitale si telfoane mobile, cu scopul intrarii pe piata dispozitivelor mobile. Dupa 2 ani de la cumpararea companiei, Google lanseaza sistemul de operare pe piata. 
+	
+	Android este un sistem de operare Open Source dezvoltat si intretinut de catre compania Google. Google a cumparat in anul 2005 compania Android Inc., o companie ce se ocupa cu sisteme de operare pentru camere foto digitale si telfoane mobile, cu scopul intrarii pe piata dispozitivelor mobile. Dupa 2 ani de la cumpararea companiei, Google lanseaza sistemul de operare pe piata. 
 	
 	In momentul de fata, 85\% din totalitatea utilizatorilor dispozitivelor mobile smartphone, utlizeaza sistemul de operare Android. 
-	Ceea ce face sistemul de operare Android, un punct de interes in viziunea invatarii automate, este arhitectura sa. Android are la baza o versiune a nucleului Linux, sistem de operare care face parte din familia UNIX. Sistemul de operare poate rula pe arhitecturi ARM dar si x86 si x86-x64 in perioada ce va urma. 
+	
+	Ceea ce face sistemul de operare Android, un punct de interes in viziunea invatarii automate, este arhitectura sa. Android are la baza o versiune a nucleului Linux, sistem de operare care face parte din familia UNIX. Sistemul de operare poate rula pe arhitecturi ARM. 
 	
 	Incepand din anul 2012, dispozitivele mobile Android sunt dezvoltate utliziand procesoare Intel iar mai tarziu se vor stabili pe arhitecturi de 64-bit, ARM64. 
 	Forta pe care procesoarele dispozitivelor mobile o aduc, impreuna cu sistemul de operare Android, ne permit utilizarea multor tehnici de invatare automata chiar pe sistemul telefonului. 
 	
+	Desi placa de baza a dispozitivelor mobile permite rularea unor computatii complexe si utilizarea procesurilor si a firelor de executii, acestea permit de altfel utilizarea placii grafice (GPU), in scopul realizarii unor computatii intense distribuite.
 	
-
+	\subsection{Android System Developer Kit}
+	
+	Android System Developer Kit, sau Android SDK, este interfata expusa de Google, in scopul dezvoltarii de aplicatii si widgeturi pentru dispozitivele mobile Android, aparuta in 2008. Android SDK este un tool ce face  functionalitatile de baza ale telefonului mobil (cum ar fi camera, miscrofonul sau giroscopul) usor de utilizat, ofera biblioteci programabile, conditii de compilare, depanare si emulare a modelelor de dispozitive Android. 
+	Sistemul de operare poate fi impartit in 5 componente:
+	\begin{itemize}
+		\item Aplications. Acestea sunt produsele finale la care au acces utilizatorii.
+		
+		
+		\item Application Framework. Application Framework este baza programabila care usureaza utilizarea unor functionalitati precum: camera video sau foto, activitati, servicii de messaging, etc.
+		
+		\item Libraries. Penru a usura utilizarea bazelor de date, Secure Socket Layer, OpenGL, etc., au fost aduse la indemana programatorilor, biblioteci specializate in utilizarea acestor tehnologii.
+		
+		\item Android Runtime. Aplicatiile au nevoie de o masina virtuala pentru a rula. Android Runtime contine toate rutinele necesare pentru a compila si a rula o aplicatie.
+		
+		\item Linux Kernel. Pentru a accesa componentele hardware ale telefonului, sistemul de operare foloseste interefete numite "drivers". Acestea sunt rutine ce opereaza low-level cu placa de baza.
+	\end{itemize}
+	
+	\vfill
+	
+	Pe parcursul dezvoltarii proiectului Android, acesta a trecut prin diferite versiuni, fiecare aducand o extensie in materie de functionalitati si imbunatatiri soft sistemului de operare. Desi proiectul era orientat spre progres, dezvoltarea s-a facut tinand cont de compatibilitatea anterioara. Astfel, versiunile noi ale sistemului de operare, pot rula aplicatii cu o vechime mai mare decat acestea.
+	
+	Prima versiune de Android a fost Astro 1.0. Aceasta rula pe modelul HTC Dream si detinea multe dintre aplicatiile care sunt inca utilizate in ziua de astazi. Printre aceste aplicatii se numara Android Market, Gmail, Google Maps etc.
+	La aprope doi ani dupa aparitia versiunii Astro, apare versiunea 1.5 Cupcake. Aceasta rula pe un nucleu Linux 2.6, si a adus multe avantaje utilizatorilor si programatorilor. Aceasta versiune a introdus widgeturi, animatii si alte functionalitati la nivelul dispozitivelor cu Bluetooth.
+	\newline
+	
+	Pe parcursul dezvoltarii, fiecare versiune aparuta a adus o imbunatatire in materie de funtionalitate sau interfata vizuala, insa un punct critic in dezvoltarea sistemului de operare si unul memorabil pentru invatarea automata, a fost versiunea 4.0, Ice Cream Sandwich. Aceasta versiunea a fost lansata in anul 2011 si este bazata pe un nucleu Linux, versiunea 3.0. Pe langa imbunatatirile aduse interfatei vizuale si flexibilitatii de configurare, versiunea Ice Cream Sandwich introduce utilizarea algoritmilor inteligenti de detectare a fetei si posibilitatea de a debloca telefonul utilizand recunoastere faciala. 	
+	Acest punct marcheaza posibilitatea utilizarii algoritmilor de invatare automata pe dispozitivele mobile, fiind un imbold spre avansarea invatarii automate pe acest plan. Dezvoltarea proiectului a tinut cont din acest moment, de necesitatea utilizarea algoritmilor inteligenti pe dispozitive mobile, astfel s-a pus accent pe accelerarea hardware si minimalizarea costului sistemelor inteligente. Avansarea componentelor hardware nu constituie intregul motiv pentru care utilizarea algoritmilor inteligenti a devenit posibila, ci si simplificarea si optimizarea acestora pentru a fi utilizati in parametri optimi de rulare.
+	\newline
+	
+	Desi exista alternative pentru dezvoltarea de aplicatii pe dispozitive Android, interfata oferita de Google este cea mai populara ca si numar de utilizatori. Un aspect important al acestei interfete, este flexibilitatea pe care o ofera, in materie de limbaje de programare. Aplicatiile Android pot fi dezvoltate pe baza Android SDK, utilizand limbajele de programare Java, C++ si Kotlin. \cite{android}	
+	Android SDK expune modalitati de a procesa imaginile preluate din camera video a dispozitivului. Aceste modalitati, impreuna cu bilblioteci specializate in computatii distribuite utilizand forta GPU, ne permite utilizarea unor algoritm de invatare automata. 
+	
+	Android introduce in versiunea API 21 , o versiune noua a interfetei programabile ce gestioneaza camera video a dispozitivului mobil, Camera 2 API. Aceasta interfata acopera utilizarea camerei, de la permisiune pana la selectarea unei camere dintr-o lista de dispozitive disponibile si procesarea in mod continuu a imaginilor captate.
+	
+	
 \end{document}
