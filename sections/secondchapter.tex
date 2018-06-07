@@ -39,7 +39,7 @@
 	\vfill
 
 	
-	In anii 1990 au inceput sa aparata telefoane mobile apartinand generatiei a doua de dispozitive mobile. Acestea utilizau transmisie digitala, tehnologie ce aducea un plus de securitate si viteza peste transmisia analog. Odata cu aceasta generatie de dispozitive mobile, apar si SMS-urile (Short Message Service), prima utilizare fiind in 1993.
+	In anii 1990 au inceput sa apara telefoane mobile apartinand generatiei a doua de dispozitive mobile. Acestea utilizau transmisie digitala, tehnologie ce aducea un plus de securitate si viteza peste transmisia analog. Odata cu aceasta generatie de dispozitive mobile, apar si SMS-urile (Short Message Service), prima utilizare fiind in 1993.
 	In 1993, desi o teorie controversata, apare primul smartphone. IBM lanseaza modelul Simon. Acesta dispunea de: ceas, calendar, agenda telefonica, notite, casuta de email, auto-completare si touchscreen. (vezi Fig. \ref{fig:simon})
 	
 	
@@ -56,6 +56,15 @@
 	Dupa aparitia modelului Simon, creat de IBM, dispozitivele mobile vor avea sa urmeze un progres remarcabil in termen de functionalitate, stil si cel mai important, forta de computatie. 
 	Telefoanele mobile au reusit sa introduca in buzunarul oamenilor forta de procesare, de la utilizarea unui simplu serviciu de email sau calendar, pana la utilizarea aplicatiilor ce dispun de inteligenta artificiala. \cite{history_cellphones}
 	\newline
+	
+	\section{Integrarea algoritmilor complexi}
+	Pe parcursul timpului, calculatoarele si dispozitivele mobile au intalnit mai multe arhitecturi ce au stat la baza componentei lor de baza, CPU. Acestea au fost dezvoltate tinand cont de necesitatea de computatie de care are nevoie un sistem de calcul. Astazi se pot enumera trei mari arhitecturi prezente in majoritatea dispozitivelor: arhitectura Intel x86, respectiv x86\char`_64 si arhitectura ARM. 
+	
+	Diferenta intre cele doua mari tipuri de procesoare o face modul in care acestea gestioneaza computatia. Procesoarele cu arhitectura Intel x86 si x86\char`_64 sunt bazate pe arhitecturi CISC (Complex instruction set computing)ce prezinta computatie complexa, concentrata si plasata pe un numar relativ mic de nuclee. Acest lucru aduce avantajul fortei mari de computatie si multe operatii per ciclu, insa creste proportional consumul de energie. In contrast, procesoarele ARM sunt dezvoltate peste arhitectura RISC (Reduced Instruction Set Computing), care sunt reprezentate prin mai multe operatii simple si scurte, rezultand in mai putin operatii per ciclu dar si consum relativ redus de energie. 
+	
+	Neajunsurile arhitecturii de tip x86 sunt in continuare duse mai departe de calculatoarele cu sistem de operare Windows datorita compatibilitatii intre versiuni, un factor important de care Microsoft tine cont pe parcursul dezvoltarii unor noi versiuni. Acest lucru face pe moment imposibila trecerea de la arhitecturi de tip x86 si x86\char`_64 spre arhitecturii ARM. Deoarece dispozitivele mobile, fiind relativ noi, nu depind de arhitectura x86, au putut fi dezvoltate peste arhitecturi ARM. Acest lucru este un factor important, datorita costului redus de energie pe care procesoarele ARM il executa. Datorita circuitelor mult mai scurte si a necesitatilor reduse la nivel de computatie, acestea sunt de altfel reduse in dimensiune, aducand un plus in utilizarea lor ca si componenta a dispozitivelor mobile. 
+	
+	 Ways of optimiziation of time (downscale cnn, hardware acceleration, ARM, Comparation between Intel x86, x8664, AMD and ARM)
 	
 	\section{Sistemul de operare Android}
 	
@@ -102,7 +111,7 @@
 	Desi exista alternative pentru dezvoltarea de aplicatii pe dispozitive Android, interfata oferita de Google este cea mai populara ca si numar de utilizatori. Un aspect important al acestei interfete, este flexibilitatea pe care o ofera, in materie de limbaje de programare. Aplicatiile Android pot fi dezvoltate pe baza Android SDK, utilizand limbajele de programare Java, C++ si Kotlin. \cite{android}	
 	Android SDK expune modalitati de a procesa imaginile preluate din camera video a dispozitivului. Aceste modalitati, impreuna cu bilblioteci specializate in computatii distribuite utilizand forta GPU, ne permite utilizarea unor algoritm de invatare automata. 
 	
-	Android introduce in versiunea API 21 , o versiune noua a interfetei programabile ce gestioneaza camera video a dispozitivului mobil, Camera 2 API. Aceasta interfata acopera utilizarea camerei, de la permisiune pana la selectarea unei camere dintr-o lista de dispozitive disponibile si procesarea in mod continuu a imaginilor captate.
+	Android introduce in versiunea API 21, o versiune noua a interfetei programabile ce gestioneaza camera video a dispozitivului mobil, Camera 2 API. Aceasta interfata acopera utilizarea camerei, de la permisiune pana la selectarea unei camere dintr-o lista de dispozitive disponibile si procesarea in mod continuu a imaginilor captate.
 	
 	
 \end{document}
