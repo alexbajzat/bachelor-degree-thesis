@@ -269,5 +269,19 @@
 		\caption{\label{fig:train} Crearea modelului si antrenarea sa}
 	\end{figure}
 	
-
+	\subsection{Aplicatie client Android}
+	
+	Pentru a putea utiliza intr-un mod practic un model antrenat, am implementat o aplicatie Android ce foloseste imagini primite ca si stream de la camera in scopul procesarii acestora utilizand un model primit prin protocolul HTTP peste TCP/IP de la un server ce gazduieste modele antrenate. 
+	Aplicatia foloseste un modul Java a carui scop este separarea logicii de configurare a operatiilor de inferenta, de scopul business al aplicatiei. \newline
+	
+	Datorita limbajului de programare Java si a structurii modulare, biblioteca pentru inferenta poate fi utilizata si pe alte platforme in scopuri diferite.
+	
+	Utilizarea bibliotecii de configurare si inferenta va fi folosita sub forma de dependenta Gradle. Pentru a putea expune dependetele ca si repository compatibil cu Gradle, am utilizat serviciile oferite www.jitpack.io si www.github.com. 
+	
+	Prin separarea acestor module, putem beneficia si de avantajul versionarii oferite de git. Astfel modificarile aduse in paralel asupra aplicatiei, respectiv bilbiotecii de inferenta, vor fi gestionate mai usor.
+	
+	
+	
+	
+	
 \end{document}
