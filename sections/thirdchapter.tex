@@ -269,7 +269,7 @@
 		\caption{\label{fig:train} Crearea modelului si antrenarea sa}
 	\end{figure}
 	
-	\subsection{Aplicatie client Android}
+	\subsection{Modul de inferenta si aplicatie client Android}
 	
 	Pentru a putea utiliza intr-un mod practic un model antrenat, am implementat o aplicatie Android ce foloseste imagini primite ca si stream de la camera in scopul procesarii acestora utilizand un model primit prin protocolul HTTP peste TCP/IP de la un server ce gazduieste modele antrenate. 
 	Aplicatia foloseste un modul Java a carui scop este separarea logicii de configurare a operatiilor de inferenta, de scopul business al aplicatiei. \newline
@@ -279,6 +279,77 @@
 	Utilizarea bibliotecii de configurare si inferenta va fi folosita sub forma de dependenta Gradle. Pentru a putea expune dependetele ca si repository compatibil cu Gradle, am utilizat serviciile oferite www.jitpack.io si www.github.com. 
 	
 	Prin separarea acestor module, putem beneficia si de avantajul versionarii oferite de git. Astfel modificarile aduse in paralel asupra aplicatiei, respectiv bilbiotecii de inferenta, vor fi gestionate mai usor.
+	
+	Scopul modulului de inferenta este de a reconstitui un model de retele neuronale convolutionale pe baza unui model de configuratii oferit de catre platforma Python de antrenare, discutata in capitolul anterior. Separare logicii este facuta astfel incat logica de transfer al modelului antrenat sa fie exclusa din implementarea inferentei. Aplicatia client se va ocupa de preluarea modelului antrenat de pe un server, transportat in format JSON, dupa care va construi modelul de inferenta pe baza parsarii modelului JSON. (Vezi Fig. \ref{fig:model-json})
+	
+	\vfill
+	
+	\begin{figure}[H]
+		\includegraphics[width=10cm]{model-json}
+		\caption{\label{fig:model-json} Exemplu de reprezentare a modelului in format JSON}
+	\end{figure}
+
+	\newpage
+	
+	Modulul este bazata pe operatii matematice pentru a realiza inferenta modelului. Arhitectura modulului este realizata intr-o maniera corespunzatoare paradigmei OOP, in scopul usurarii operatiilor si a genericitatii lor. Astfel obtinem 3 entitati de baza, pe baza carora se va dezvolta logica de inferenta.Interfetele SimpleLayer, ComplexLayer si TransitionLayer definesc metoda forward a fiecarui tip de layer dintr-o retea neuronala.(Vezi Fig. \ref{fig:layers-architecture})
+	
+	
+	\begin{figure}[H]
+		\includegraphics[width=15cm]{cnn-inference-class-graph}
+		\caption{\label{fig:layers-architecture} Diagrama de clase a entitatilor de baza din modulul de inferenta}
+	\end{figure}
+
+	Implementarea entitatilor de baza este realizata de tipurile concrete de straturi, si anume: HiddenSimpleLayer, ConvComplexLayer, MaxPoolingComplexLayer si FlatteningTransitionLayer. Pentru a urmari dezvoltarea unui cod sugestiv am urmarit conventia de denumire a straturile in felul urmator: numele tipului de strat, urmat de complexitatea stratului (Simple sau Complex).
+	
+	Scopul stratului de tip TransitionLayer este de a crea o compatibilitate intre datele de iesire ale stratului de tip ComplexLayer si datele de intrare ale tipului SimpleLayer. 
+	
+	O implementare a stratului SimpleLayer, in contextul actual, este realizata de clasa HiddenSimpleLayer. Aceasta reprezinta tipul de strat ascuns din componenta unui model de retele neuronale. Acesta detine campuri necesare operatiei de mutatie: ponderile (weights), biases si functia de activare. (Vezi Fig. \ref{fig:simple-layer})
+	
+	
+	\begin{figure}[H]
+		\includegraphics[width=15cm]{simple-layer}
+		\caption{\label{fig:simple-layer} O implementare a interfetei SimpleLayer. HiddenSimpleLayer}
+	\end{figure}
+
+	\vfill
+
+
+	Interfata ComplexLayer se regaseste in doua tipuri de straturi prezente in modul, si anume: ConvComplexLayer si MaxPoolingComplexLayer. (Vezi Fig. \ref{fig:complex-layer})
+	
+		\begin{figure}[H]
+		\includegraphics[width=15cm]{conv-complex-layer}
+		\caption{\label{fig:complex-layer} O implementare a interfetei ComplexLayer. ConvComplexLayer}
+	\end{figure}
+
+	Prin utilizarea interfetelor putem generaliza operatiile si tipurile de straturi. Astfel inferenta se reduce la o lista de obiecte SimpleLayer, o lista de obiecte ComplexLayer si un element tranzient de tip Transition.
+	
+	In urma finalizarii pasului de inferenta, se va returna un obiect de tipul PredictionResult. Acest obiect va avea in componenta atat rezultatul ne-normalizat al procesului de inferenta cat si probabilitatile pentru fiecare clasa.(Vezi Fig. \ref{fig:prediction-result})
+	
+	\begin{figure}[H]
+		\includegraphics[width=15cm]{prediction-result}
+		\caption{\label{fig:prediction-result} Componenta clasei PredictionResult}
+	\end{figure}
+	
+	\vfill
+	
+	Aplicatia Android isi va actualiza modelul predictiv printr-un call http la un server (in cazul nostru, serverul fiind unul doar de expunere a modelului json), si va reactualiza obiectul oferit de modulul de inferenta. Pentru a putea crea un obiect Model al bibliotecii de inferenta, vom utiliza clasa NetworkModelBuilder. Aceasta va fi interfata client ce va sta intre operatiile de inferenta si interfata vizuala a utilizatorului. Clasa NetworkModelBuilder defineste o metoda build, ce primeste un obiect de tip ModelDescriptor si unul de tip Configuration si returneaza un obiect de tipul NetworkModel ce va putea fi utilizat in stratul de View. 
+	
+	\newpage
+	
+	Dupa finalizarea configurarii modelului, se va incepe un proces de stream al imaginilor. Acest stream va fi utilizat atat pentru crearea unei previzualizari dar si pentru procesare. Fiecare cadru va fi pregatit pentru procesare (reducere in dimensiune si centrare) si va fi trimis sub format Bitmap obiectului de tip NetworkModel. 
+	Acesta va extrage valoriile reale corespunzatoare obiectului de tip Bitmap si le va trimite spre a fi procesate de modulul de inferenta. Dupa finalizarea unui ciclu de predictie, obiectul de tip NetworkModel va returna o predictie, pe baza careia activitatea isi va actualiza elementele.
+	(Vezi Fig. \ref{fig:prediction-sequence})\newline
+	
+	\begin{figure}[H]
+		\includegraphics[width=15cm]{sequence}
+		\caption{\label{fig:prediction-sequence} Diagrama de secventa a functionalitatii de procesare}
+	\end{figure}
+	
+	
+
+	
+
+	
 	
 	
 	
