@@ -46,9 +46,9 @@
 	
 	Diferența între cele două mari tipuri de procesoare o face modul în care acestea gestionează computația. Procesoarele cu arhitectură Intel x86 și x86\char`_64 sunt bazate pe arhitecturi CISC (Complex instruction set computing) ce prezintă computație complexă, concentrată si plasată pe un număr relativ mic de nuclee. Acest lucru aduce avantajul forței mari de computație și multe operații per ciclu, însa crește proporțional consumul de energie. În contrast, procesoarele ARM sunt dezvoltate peste arhitectura RISC (Reduced Instruction Set Computing), care sunt reprezentate prin mai multe operații simple și scurte, rezultând în mai puține operații per ciclu dar și consum relativ redus de energie. 
 	
-	Neajunsurile arhitecturii de tip x86 sunt in continuare duse mai departe de calculatoarele cu sistem de operare Windows datorită compatibilității între versiuni, un factor important de care Microsoft ține cont. Acest lucru face pe moment imposibilă trecerea de la arhitecturi de tip x86 si x86\char`_64 spre arhitecturii ARM. 
+	Neajunsurile arhitecturii de tip x86 sunt în continuare duse mai departe de calculatoarele cu sistem de operare Windows datorită compatibilității între versiuni, un factor important de care Microsoft ține cont. Acest lucru face pe moment imposibilă trecerea de la arhitecturi de tip x86 si x86\char`_64 spre arhitecturii ARM. 
 	
-	Deoarece dispozitivele mobile fiind relativ noi nu depind de arhitectura x86 și au putut fi dezvoltate peste arhitecturi ARM. Acest lucru este un factor important, datorită costului redus de energie pe care procesoarele ARM îl exercită. Datorită circuitelor mult mai scurte și a necesităților reduse la nivel de computatie datorate numărului mic de tranzistori, acestea sunt de altfel reduse in dimensiune, aducând un plus in utilizarea lor ca și componenta a dispozitivelor mobile.
+	Deoarece dispozitivele mobile fiind relativ noi nu depind de arhitectura x86 și au putut fi dezvoltate peste arhitecturi ARM. Acest lucru este un factor important, datorită costului redus de energie pe care procesoarele ARM îl exercită. Datorită circuitelor mult mai scurte și a necesităților reduse la nivel de computație datorate numărului mic de tranzistori, acestea sunt de altfel reduse in dimensiune, aducând un plus in utilizarea lor ca și componenta a dispozitivelor mobile.
 	
 	Arhitecturile de tip ARM nu sunt noi. Acestea sunt prezente încă din anul 1980, aduse pe piață de compania Acorn RISC Machines Ltd. iar abrevierea provine de la Advanced RISC Machines. 
 	
@@ -56,56 +56,55 @@
 	Intel X86 realizează operatii complexe pe un număr redus de nuclee puternice computațional, procesoarele ARM pot împărți într-un număr mult mai mare de nuclee. Acest lucru devine optim în cazul unei aplicații software dezvoltată tinând cont de această modularizare si scalabilitate.
 	\cite{arm_architecture_android}
 	
-	Lupta imbunatatirii capabilitatii procesoarelor si componentelor hardware ale telefonului mobile, sunt duse in scopul portarii operatiilor de inferenta a retelelor neuronale complexe (Deep Neural Networks) de pe cloud chiar pe dispozitivul celular, in scopul diminuarii timpului obtinut pe parcursul etapei de transfer de date (TCP/IP si protocoale aferente). Avansarea componentelor de tip hardware aduc un plus doar de moment, urmand a-si pierde de eficienta in timp. Pentru a obtine o optimizare buna a serviciilor de inferenta, trebuiesc luate in calcul diferite metode de accelerare a operatiilor. Incepand de la arhitecturi scalabile si ne-consumatoare ARM, abstractizarea operatiilor responsabile de hardware si expunerea unei interfete pentru utilizarea acestora eficient si pana la optimizarea unor algoritmii in scopul sprijinirii arhitecturilor reduse in puterea de computatie.
+	Lupta imbunătățirii capabilității procesoarelor și componentelor hardware ale telefonului mobile, sunt duse in scopul portării operațiilor de inferență a rețelelor neuronale complexe (Deep Neural Networks) de pe cloud chiar pe dispozitivul celular, în scopul diminuării timpului obținut pe parcursul etapei de transfer de date (TCP/IP si protocoale aferente). Avansarea componentelor de tip hardware aduc un plus doar de moment, urmând a-și pierde eficiența in timp. Pentru a obține o optimizare bună a serviciilor de inferență, trebuiesc luate în calcul diferite metode de accelerare a operațiilor. Începând de la arhitecturi scalabile și ne-consumatoare ARM, abstractizarea operațiilor responsabile de hardware și expunerea unei interfețe pentru utilizarea acestora eficient și până la optimizarea unor algoritmii în scopul sprijinirii arhitecturilor reduse in puterea de computație.
 	
-	Accelerarea inferentei retelelor neuronale este un obiectiv luat in calcul in momentul actual de multe dintre companiilor producatoare de dispozitive mobile. Apple vine, incepand cu modelul Iphone X, cu acceleratorul Neural Engine, specializat pe operatiile inferentei, iar Microsoft HoloLens vin cu HPU CNN. \cite{arm_ml}
+	Accelerarea inferenței rețelelor neuronale este un obiectiv luat in calcul în momentul actual de multe dintre companiilor producătoare de dispozitive mobile. Apple vine, începând cu modelul Iphone X, cu acceleratorul Neural Engine, specializat pe operațiile inferenței, iar Microsoft HoloLens vine cu HPU CNN. \cite{arm_ml}
 	
 	\section{Sistemul de operare Android}
 	
-	Android este un sistem de operare Open Source dezvoltat si intretinut de catre compania Google. Google a cumparat in anul 2005 compania Android Inc., o companie ce se ocupa cu sisteme de operare pentru camere foto digitale si telfoane mobile, cu scopul intrarii pe piata dispozitivelor mobile. Dupa 2 ani de la cumpararea companiei, Google lanseaza sistemul de operare pe piata. 
+	Android este un sistem de operare Open Source dezvoltat si întreținut de către compania Google. Google a cumparat în anul 2005 compania Android Inc., o companie ce se ocupa cu sisteme de operare pentru camere foto digitale și dispozitive mobile, cu scopul intrării pe piața dispozitivelor mobile. După 2 ani de la cumpărarea companiei, Google lansează sistemul de operare pe piață. 
 	
-	In momentul de fata, 85\% din totalitatea utilizatorilor dispozitivelor mobile smartphone, utlizeaza sistemul de operare Android. 
+	În momentul de față, 85\% din totalitatea utilizatorilor dispozitivelor mobile smartphone, utlizează sistemul de operare Android. 
 	
-	Ceea ce face sistemul de operare Android, un punct de interes in viziunea invatarii automate, este arhitectura sa. Android are la baza o versiune a nucleului Linux, sistem de operare care face parte din familia UNIX. Sistemul de operare poate rula pe arhitecturi ARM. 
+	Ceea ce face sistemul de operare Android, un punct de interes în viziunea invățării automate, este arhitectura sa. Android are la bază o versiune a nucleului Linux, sistem de operare care face parte din familia UNIX. Sistemul de operare poate rula pe arhitecturi ARM. 
 	
-	Incepand din anul 2012, dispozitivele mobile Android sunt dezvoltate utliziand procesoare Intel iar mai tarziu se vor stabili pe arhitecturi de 64-bit, ARM64. 
-	Forta pe care procesoarele dispozitivelor mobile o aduc, impreuna cu sistemul de operare Android, ne permit utilizarea multor tehnici de invatare automata chiar pe sistemul telefonului. 
+	Începând cu anul 2012, dispozitivele mobile Android sunt dezvoltate utilizând procesoare Intel iar mai târziu se vor stabili pe arhitecturi de 64-bit, ARM. 
+	Forța pe care procesoarele dispozitivelor mobile o aduc, împreună cu sistemul de operare Android, ne permit utilizarea multor tehnici de învățare automată chiar pe sistemul telefonului. 
 	
-	Desi placa de baza a dispozitivelor mobile permite rularea unor computatii complexe si utilizarea procesurilor si a firelor de executii, acestea permit de altfel utilizarea placii grafice (GPU), in scopul realizarii unor computatii intense distribuite.
+	Deși placa de bază a dispozitivelor mobile permite rularea unor computații complexe și utilizarea procesurilor și a firelor de execuție, acestea permit de altfel utilizarea plăcii grafice (GPU) în scopul realizării unor computații intense si distribuite.
 	
 	\subsection{Android System Developer Kit}
 	
-	Android System Developer Kit, sau Android SDK, este interfata expusa de Google, in scopul dezvoltarii de aplicatii si widgeturi pentru dispozitivele mobile Android, aparuta in 2008. Android SDK este un tool ce face  functionalitatile de baza ale telefonului mobil (cum ar fi camera, miscrofonul sau giroscopul) usor de utilizat, ofera biblioteci programabile, conditii de compilare, depanare si emulare a modelelor de dispozitive Android. 
-	Sistemul de operare poate fi impartit in 5 componente:
+	Android System Developer Kit, sau Android SDK, este interfața expusă de Google, în scopul dezvoltării de aplicații și widgeturi pentru dispozitivele mobile Android, apărută în 2008. Android SDK este un tool ce face  funcționalitățile de bază ale telefonului mobil (cum ar fi camera, microfonul sau giroscopul) ușor de utilizat, oferă biblioteci programabile, condiții de compilare, depanare și emulare a modelelor de dispozitive Android. 
+	Sistemul de operare poate fi împărțit în 5 componente:
 	\begin{itemize}
 		\item Aplications. Acestea sunt produsele finale la care au acces utilizatorii.
 		
 		
-		\item Application Framework. Application Framework este baza programabila care usureaza utilizarea unor functionalitati precum: camera video sau foto, activitati, servicii de messaging, etc.
+		\item Application Framework. Application Framework este baza programabilă care ușureaza utilizarea unor functionalități precum: camera video sau foto, activități, servicii de messaging, etc.
 		
-		\item Libraries. Penru a usura utilizarea bazelor de date, Secure Socket Layer, OpenGL, etc., au fost aduse la indemana programatorilor, biblioteci specializate in utilizarea acestor tehnologii.
+		\item Libraries. Penru a usura utilizarea bazelor de date, Secure Socket Layer, OpenGL, etc., au fost aduse la îndemâna programatorilor, biblioteci specializate în utilizarea acestor tehnologii.
 		
-		\item Android Runtime. Aplicatiile au nevoie de o masina virtuala pentru a rula. Android Runtime contine toate rutinele necesare pentru a compila si a rula o aplicatie.
+		\item Android Runtime. Aplicațiile au nevoie de o masină virtuala pentru a rula. Android Runtime contine toate rutinele necesare pentru a compila și a rula o aplicație.
 		
-		\item Linux Kernel. Pentru a accesa componentele hardware ale telefonului, sistemul de operare foloseste interefete numite "drivers". Acestea sunt rutine ce opereaza low-level cu placa de baza.
+		\item Linux Kernel. Pentru a accesa componentele hardware ale telefonului, sistemul de operare folosește interefețe numite "drivers". Acestea sunt rutine ce opereaza low-level cu placa de bază.
 	\end{itemize}
 	
 	\vfill
 	
-	Pe parcursul dezvoltarii proiectului Android, acesta a trecut prin diferite versiuni, fiecare aducand o extensie in materie de functionalitati si imbunatatiri soft sistemului de operare. Desi proiectul era orientat spre progres, dezvoltarea s-a facut tinand cont de compatibilitatea anterioara. Astfel, versiunile noi ale sistemului de operare, pot rula aplicatii cu o vechime mai mare decat acestea.
+	Pe parcursul dezvoltăii proiectului Android, acesta a trecut prin diferite versiuni, fiecare aducând o extensie în materie de funcționalități și îmbunătățiri soft. Desi proiectul era orientat spre progres, dezvoltarea s-a făcut ținând cont de compatibilitatea anterioară. Astfel, versiunile noi ale sistemului de operare, pot rula aplicații cu o vechime mai mare decăt acestea.
 	
-	Prima versiune de Android a fost Astro 1.0. Aceasta rula pe modelul HTC Dream si detinea multe dintre aplicatiile care sunt inca utilizate in ziua de astazi. Printre aceste aplicatii se numara Android Market, Gmail, Google Maps etc.
-	La aprope doi ani dupa aparitia versiunii Astro, apare versiunea 1.5 Cupcake. Aceasta rula pe un nucleu Linux 2.6, si a adus multe avantaje utilizatorilor si programatorilor. Aceasta versiune a introdus widgeturi, animatii si alte functionalitati la nivelul dispozitivelor cu Bluetooth.
+	Prima versiune de Android a fost Astro 1.0. Aceasta rula pe modelul HTC Dream și deținea multe dintre aplicațiile care sunt înăa utilizate în ziua de astăzi. Printre aceste aplicații se numără Android Market, Gmail, Google Maps etc.
+	La aprope doi ani după apariția versiunii Astro, apare versiunea 1.5 Cupcake. Aceasta rula pe un nucleu Linux 2.6, și a adus multe avantaje utilizatorilor și programatorilor. Această versiune a introdus widgeturi, animații și alte funcționalități la nivelul dispozitivelor cu Bluetooth.
 	\newline
 	
-	Pe parcursul dezvoltarii, fiecare versiune aparuta a adus o imbunatatire in materie de funtionalitate sau interfata vizuala, insa un punct critic in dezvoltarea sistemului de operare si unul memorabil pentru invatarea automata, a fost versiunea 4.0, Ice Cream Sandwich. Aceasta versiunea a fost lansata in anul 2011 si este bazata pe un nucleu Linux, versiunea 3.0. Pe langa imbunatatirile aduse interfatei vizuale si flexibilitatii de configurare, versiunea Ice Cream Sandwich introduce utilizarea algoritmilor inteligenti de detectare a fetei si posibilitatea de a debloca telefonul utilizand recunoastere faciala. 	
-	Acest punct marcheaza posibilitatea utilizarii algoritmilor de invatare automata pe dispozitivele mobile, fiind un imbold spre avansarea invatarii automate pe acest plan. Dezvoltarea proiectului a tinut cont din acest moment, de necesitatea utilizarea algoritmilor inteligenti pe dispozitive mobile, astfel s-a pus accent pe accelerarea hardware si minimalizarea costului sistemelor inteligente. Avansarea componentelor hardware nu constituie intregul motiv pentru care utilizarea algoritmilor inteligenti a devenit posibila, ci si simplificarea si optimizarea acestora pentru a fi utilizati in parametri optimi de rulare.
+	Pe parcursul dezvltării, fiecare versiune apărută a adus o îmbunătățire in materie de funcționalitate sau interfață vizuală, insă un punct critic în dezvoltarea sistemului de operare și unul memorabil pentru învățarea automată, a fost versiunea 4.0, Ice Cream Sandwich. Această versiunea a fost lansată în anul 2011 și este bazată pe un nucleu Linux, versiunea 3.0. Pe lângă îmbunătățirile aduse interfăței vizuale și flexibilității de configurare, versiunea Ice Cream Sandwich introduce utilizarea algoritmilor inteligenți de detectare a feței și posibilitatea de a debloca telefonul utilizând recunoaștere facială. 	
+	Acest punct marchează posibilitatea utilizării algoritmilor de învățare automată pe dispozitivele mobile, fiind un imbold spre avansarea învățării automate pe acest plan. Dezvoltarea proiectului a ținut cont din acest moment, de necesitatea utilizării algoritmilor inteligenti pe dispozitive mobile, astfel s-a pus accent pe accelerarea hardware si minimalizarea costului sistemelor inteligente. Avansarea componentelor hardware nu constituie întregul motiv pentru care utilizarea algoritmilor inteligenți a devenit posibila, ci și simplificarea si optimizarea acestora pentru a fi utilizați în parametri optimi de rulare.
 	\newline
 	
-	Desi exista alternative pentru dezvoltarea de aplicatii pe dispozitive Android, interfata oferita de Google este cea mai populara ca si numar de utilizatori. Un aspect important al acestei interfete, este flexibilitatea pe care o ofera, in materie de limbaje de programare. Aplicatiile Android pot fi dezvoltate pe baza Android SDK, utilizand limbajele de programare Java, C++ si Kotlin. \cite{android}	
-	Android SDK expune modalitati de a procesa imaginile preluate din camera video a dispozitivului. Aceste modalitati, impreuna cu bilblioteci specializate in computatii distribuite utilizand forta GPU, ne permite utilizarea unor algoritm de invatare automata. 
+	Deși există alternative pentru dezvoltarea de aplicații pe dispozitive Android, interfața oferită de Google este cea mai populară ca și număr de utilizatori. Un aspect important al acestei interfețe, este flexibilitatea pe care o oferă, în materie de limbaje de programare. Aplicațiile Android pot fi dezvoltate pe baza Android SDK, utilizând limbajele de programare Java, C++ si Kotlin. \cite{android}	
+	Android SDK expune modalități de a procesa imaginile preluate din camera video a dispozitivului. Aceste modalități, împreună cu bilblioteci specializate în computații distribuite utilizând forța GPU, ne permite utilizarea unor algoritm de invățare automată. 
 	
-	Android introduce in versiunea API 21, o versiune noua a interfetei programabile ce gestioneaza camera video a dispozitivului mobil, Camera 2 API. Aceasta interfata acopera utilizarea camerei, de la permisiune pana la selectarea unei camere dintr-o lista de dispozitive disponibile si procesarea in mod continuu a imaginilor captate.
 	
 	
 \end{document}
