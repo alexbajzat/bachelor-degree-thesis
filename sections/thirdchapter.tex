@@ -17,7 +17,7 @@
 	Aplicatia va rula pe un sistem cu capacitate computationala buna. Aceasta va permite construirea arhitecturii modelului de retele neuronale convolutionale si  alegerea unor parametrii utilizati pe parcursul procesului de invatare, iar pe baza configuratiei alese  va trece modelul prin etapa de antrenare. La finalul  etapei de antrenare, aplicatia va crea un fisier de tip JSON, unde va exporta arhitectura modelului impreuna cu parametrii acestuia. 
 	
 	Exportarea fisierului JSON, unde este prezenta o versiune a modelului antrenat, este realizata in scopul plasarii acestui model pe un server, responsabil cu departajarea informatiilor tuturor clientilor. 
-	Pentru antrenarea modelului, vom folosi un set de aproximativ 800 de poze, realizate cu un dispozitiv mobil si pre-procesate in scopul scoaterii in evidenta a informatiei relevante. Pozele vor fi grupate in  7 clase, reprezentand note intregi, simple (fara diez si bemol), de la DO la SI, avand cca. 120 de poze per clasa. 
+	Pentru antrenarea modelului, vom folosi un set de aproximativ 3500 de imagini, realizate cu un dispozitiv mobil si pre-procesate in scopul scoaterii in evidenta a informatiei relevante. Pozele vor fi grupate in  7 clase, reprezentand note intregi, simple (fara diez si bemol), de la DO la SI, avand cca. 500 de imagini per clasa. 
 	
 	Aplicatia va incarca in memorie imaginile, le va procesa pentru a le aduce la dimensiunea optima antrenarii si va gestiona dimensiunile canalelor de imagine, in scopul optimizarii complexitatii de timp al etapei de invatare. Dupa realizarea acestor pasi, aplicatia va trece setul de date de intrare printr-o etapa de randomizare, cu scopul inlaturarii omogenitatii, un factor crucial care influenteza capabilitatea modelului de atingere a unei precizii optime, iar pe baza configuratiei alese aplicatia va grupa imaginile si le va transmite modelului in scopul antrenarii.
 	
@@ -56,7 +56,7 @@
 	\begin{itemize}	
 	\item	Aplicatia Python responsabila cu  antrenarea modelului de retele neuronale
 	\item	Modulul de inferenta scris in Java pentru portarea modelului de dispozitive mobile
-	\item	Serviciu Java REST API, pentru distribuirea modelului
+	\item	Serviciu Mock REST API, pentru distribuirea modelului
 	\item	Aplicatie client Android care utilizeaza modelul pentru recunoasterea notelor muzicale
 	\end{itemize}
 	
