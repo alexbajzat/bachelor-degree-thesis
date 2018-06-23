@@ -204,7 +204,7 @@
 	
 	Astfel aplicand regula lantului derivatelor in contextul nostru, fiecare strat isi va calcula derivata in functie de derivata stratului urmator. In cazul ultimului strat, cel ce precede clasificatorul, derivata va fi chiar rezultatul functiei de eroare.
 	
-	
+	\vfill
 	Operatia backprop a stratului de tip Hidden se produce astfel:
 	\begin{itemize}
 	\item	Vom calcula derivata functiei de activare. Aceasta derivata va fi implementata de catre clasele de tip Activation.
@@ -214,13 +214,15 @@
 	
 	\item	Se calculeaza noile derivatele ale ponderilor, utilizand aceasi operatie de multiplicare. Odata ce obtinem derivatele ponderilor, putem modifica ponderile. Putem profita de faptul ca derivatele indica panta functiei, pentru a modifica ponderile in scopul convergerii. Utilizand parametrul din etapa de configuratie, stepSize (parametru ce influenteaza viteza de convergere), vom modifica ponderile astfel incat la urmatorul pas de feed-forward acestea vor avea o eroare diminuata asupra aceluiasi set de intrari.
 	
-	\item	Odata ce ponderile au fost modificate, vom repeta pasul derivarii pentru datele de intrare si noile ponderi. (Vezi Fig. \ref{fig:hidden_backprop})
-	\end{itemize}
+	\item	Odata ce ponderile au fost modificate, vom repeta pasul derivarii pentru datele de intrare si noile ponderi. (Vezi Fig. \ref{fig:hidden_backprop})\newline
+	\end{itemize}	
 
 	\begin{figure}[H]
 	\includegraphics[width=15cm]{hidden_backprop}
 	\caption{\label{fig:hidden_backprop} Operatia backprop a stratului Hidden}
 	\end{figure}
+
+
 
 	Operatia backprop a stratului de tip Convolution:
 	\begin{itemize}
@@ -232,8 +234,42 @@
 	\includegraphics[width=17cm]{conv_back}
 	\caption{\label{fig:conv_backprop} Operatia backprop a stratului de Convolution}
 	\end{figure}
+	
 
-	Configurarea arhitecturii a fost conceputa sa urmareasca un sablon cat mai simplu. Definirea straturilor si crearea lor va fi realizata prin metoda addLayer al clasei LayersBuilder. Metoda primeste un parametru ce reprezinta tipul de strat ce se doreste a fi creat si un dictionar ce reprezinta parametrii necesari construirii tipului respectiv de strat. Scopul clasei LayersBuilder este de a usura crearea arhitecturii modelului prin izolarea logicii de construire si concatenare a tipurilor de straturi. (vezi Fig. \ref{fig:add_layers})	
+
+	Configurarea arhitecturii a fost concepută să urmărească un sablon cât mai simplu. Definirea arhitecturii și a parametrilor de antrenare va fi realizată prin crearea unui fișier de tip JSON. 
+	Acest fișier va fi plasat în folderul requests din structura proiectului.La pornirea aplicației, utilizatorul va putea selecta numele fișierului ce se dorește a reprezenta arhitectura. (Vezi Fig. \ref{fig:config_json}) 
+	
+	\begin{figure}[H]
+		\includegraphics[width=10cm]{json_config}
+		\caption{\label{fig:config_json} Fișier de configurare JSON}
+	\end{figure}
+	
+	Aplicația va conține o structură ierarhică unde vor iși va gestiona resursele. Aceste resurse pot fi găsite in directorul resources. (Vezi Fig. \ref{fig:resources-folder})
+	
+	Pentru a asigura integritatea platformei, aplicația va verifica existența structurii de directoare ce conțin configurări (requests) și date de antrenare(dataset). Daca aceste constrângeri lipsesc, utilizatorul va fi avertizat printr-un mesaj de eroare. Restul structurilor vor fi generate la momentul rulării primei rutine de antrenare.
+	
+	Structura de resurse este după cum urmează:
+	\begin{itemize}
+	\item Folderul dataset va conține o structura de forma processed/{k} unde n este k este un numar între 0 și n, unde n este numărul de clase.
+	
+	\item Folderul requests va conține configurările in format JSON.
+	
+	\item Folderul features va conține imagini rezultate pe urma operațiilor de convoluție a straturilor și au un scop analitic.
+	
+	\item Folderul history va conține, la finalul etapei de antrenare, un fișier de tip HTML ce va conține structura modelului antrenat (JSON) si un tabel cu progresul predicției la fiecare epocă.
+	
+	\item Folder model-data va conține modelul antrenat în format JSON. Acest fișier va putea fi distribuit mai departe la finalul etapei de antrenare.
+	
+	\end{itemize}
+	
+	\begin{figure}[H]
+		\includegraphics[width=7cm]{resources-folder}
+		\caption{\label{fig:resources-folder} Structura resurselor}
+	\end{figure}
+
+	
+	Pe baza configurarii JSON, definirea straturilor și crearea lor va fi realizată prin metoda addLayer a clasei LayersBuilder. Metoda primește un parametru ce reprezintă tipul de strat ce se doreste a fi creat si un obiect ce reprezintă parametrii necesari construirii tipului respectiv de strat. Scopul clasei LayersBuilder este de a ușura crearea arhitecturii modelului prin izolarea logicii de construire si concatenarea tipurilor de straturi. (vezi Fig. \ref{fig:add_layers})	
 	
 	\begin{figure}[H]
 		\includegraphics[width=17cm]{add_layers}
@@ -249,8 +285,6 @@
 		\caption{\label{fig:layer_builder} Pregatirea datelor; metoda build}
 	\end{figure}
 	
-	\vfill
-	
 
 	Dupa ce au fost adunate desule informatii generale legate de structura modelului, vom incepe etapa de constructie a modelului, prin crearea unei liste de obiecte de tip Layer. Parametrii de regularizare si functia de activare vor fi transmise ca si parametri la momentul initializarii tipului de strat. Dupa ce lista a fost construita cu succes,  va fi returnata spre a fi folosita de obiectul de tip Model. (Vezi Fig. \ref{fig:actual_build})
 	
@@ -260,7 +294,6 @@
 		\caption{\label{fig:actual_build} Constructia sirului de straturi}
 	\end{figure}
 
-	\newpage
 
 	Dupa ce avem lista de straturi consistent configurata, vom crea un obiect de tip Model, entitatea care va modela parametrii. (vezi Fig \ref{fig:train})
 	
@@ -269,6 +302,7 @@
 		\caption{\label{fig:train} Crearea modelului si antrenarea sa}
 	\end{figure}
 	
+	\newpage
 	\subsection{Modul de inferenta si aplicatie client Android}
 	
 	Pentru a putea utiliza intr-un mod practic un model antrenat, am implementat o aplicatie Android ce foloseste imagini primite ca si stream de la camera in scopul procesarii acestora utilizand un model primit prin protocolul HTTP peste TCP/IP de la un server ce gazduieste modele antrenate. 
@@ -343,16 +377,6 @@
 	\begin{figure}[H]
 		\includegraphics[width=15cm]{sequence}
 		\caption{\label{fig:prediction-sequence} Diagrama de secventa a functionalitatii de procesare}
-	\end{figure}
-	
-	
-
-	
-
-	
-	
-	
-	
-	
+	\end{figure}	
 	
 \end{document}
