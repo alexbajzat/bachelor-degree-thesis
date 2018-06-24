@@ -29,7 +29,7 @@
 	\item	Alegerea dimensiunii seturilor de antrenare (batch size). Acest parametru va gestiona modul de grupare a imaginilor. În funcție de acest parametru se va calcula dimensiunea setului de date de validare.
 	
 	
-	\item	Construirea arhitecturii prin adăugarea și configurarea straturilor rețelei neuronale convoluționale(layers).  Fiecare strat al rețelei, va fi configurat individual și va fi adăugat în arhitectura modelului. Tipurile de straturi care vor fi prezente în aplicație sunt: Convolution Layer, Max Pooling Layer, Flattening Layer si Hidden Layer. Aceste straturi vor fi configurate prin parametrii cum ar fi: dimensiunea ponderilor, dimensiunea și numărul filtrelor, step-size (forța de modificare a ponderilor și a filtrelor), parametru de regularizare, etc.
+	\item	Construirea arhitecturii prin adăugarea și configurarea straturilor rețelei neuronale.  Fiecare strat al rețelei, va fi configurat individual și va fi adăugat în arhitectura modelului. Tipurile de straturi care vor fi prezente în aplicație sunt: Convolution Layer, Max Pooling Layer, Flattening Layer si Hidden Layer. Aceste straturi vor fi configurate prin parametrii cum ar fi: dimensiunea ponderilor, dimensiunea și numărul filtrelor, step-size (forța de modificare a ponderilor și a filtrelor), parametru de regularizare, etc.
 	
 	\item	Alegerea unui clasificator capabil de creearea unei predicții, bazate pe datele procesate anterior de către straturile modelului. Deți  natura aplicației permite alegerea mai multor tipuri de clasificatoare în etapa de construire a arhitecturii, vom implementa clasificatorul Softmax, avand o eficiență bună în cazul contextului nostru.
 	
@@ -314,7 +314,7 @@
 	
 	Prin separarea acestor module, putem beneficia și de avantajul versionării oferite de serviciului git. Astfel modificările aduse în paralel asupra aplicației, respectiv bilbiotecii de inferență, vor fi gestionate mai usor.
 	
-	Scopul modulului de inferență este de a reconstitui un model de rețele neuronale convoluționale pe baza unui model de configurații oferit de către platforma Python de antrenare, discutată în capitolul anterior. Separarea logicii este facută astfel încât logica de transfer al modelului antrenat să fie exclusă din implementarea inferenței. Aplicația client se va ocupa de preluarea modelului antrenat de pe un server, transportat în format JSON, după care va construi modelul de inferență pe baza parsării modelului JSON. (Vezi Fig. \ref{fig:model-json})
+	Scopul modulului de inferență este de a reconstitui un model de rețele neuronale convolu-\newline ționale pe baza unui model de configurații oferit de către platforma Python de antrenare, discutată în capitolul anterior. Separarea logicii este facută astfel încât logica de transfer al modelului antrenat să fie exclusă din implementarea inferenței. Aplicația client se va ocupa de preluarea modelului antrenat de pe un server, transportat în format JSON, după care va construi modelul de inferență pe baza parsării modelului JSON. (Vezi Fig. \ref{fig:model-json})
 	
 	\vfill
 	
